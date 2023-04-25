@@ -1,0 +1,20 @@
+
+.container {
+background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+   
+}
+
+
+body{
+    /* background-image: url(../img/vintage-913889_1920.jpg);*/
+    background-image: linear-gradient(to right top, #e68ee6, #ff80b0, #ff9365, #ffc004, #a8eb12);
+    background-size: cover;
+        background-repeat: no-repeat;
+        background-clip: border-box;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./content/css/style.css">
+    <title>Hangman</title>
+</head>
+<body class="h-screen">
+
+    <div class="container w-[80%] max-w-[600px] h-auto mx-auto mt-12 p-3">
+
+    <div class="pt-5 text-center">
+        <img class="mx-auto pb-12 img" id="img" src="./content/img/0.jpg" alt="hangman">
+       
+        <p id="word"></p>
+        <div id="keyboard"></div>
+        <button class="btn bg-orange-300 px-3 mt-5 rounded-lg" onClick="reset()">Reset</button>
+    </div>
+
+    </div>
+    
+    <script src="./content/js/script.js"></script>
+</body>
+</html>
