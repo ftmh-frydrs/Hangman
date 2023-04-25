@@ -29,7 +29,7 @@ function keyboard(){
         `
     ).join('');
 
-    document.querySelector("#keyboard").innerHTML = btnKeyboard
+    document.querySelector("#keyboard").innerHTML = btnKeyboard;
 }
 
 keyboard()
