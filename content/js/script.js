@@ -1,26 +1,27 @@
+
+
 var fruit = [
-	"Apple",
-    "Blueberry",
-    "Mandarin",
-    "Pineapple",
-    "Pomegranate",
-    "Watermelon",
-]
+    "apple",
+    "blueberry",
+    "mandarin",
+    "pineapple",
+    "pomegranate",
+    "watermelon",
+];
 
 let min = 0;
 let max = 6;
 let answer = '';
 let wordEl = null;
-text = [];
+let text = [];
+let guessed = false;
 
-
-
-function Randowm() {
-      answer = fruit[Math.floor(Math.random() * 6)];
+function Random() {
+    answer = fruit[Math.floor(Math.random() * 6)]
 }
 
 function keyboard() {
-    let btnKeyboard ="qwertyuiopasdfghjklzxcvbnm".split('').map(e =>
+   let btnKeyboard ="qwertyuiopasdfghjklzxcvbnm".split('').map(e =>
         `
         <button class="btnEl bg-pink-500 m-1 w-12 h-12 rounded-lg"
         id='` + e + `'
@@ -31,35 +32,68 @@ function keyboard() {
         `
     ).join('');
 
+
     document.querySelector("#keyboard").innerHTML = btnKeyboard;
 }
 
-function handeling(){
-     
+function handeling(letter){
+    if (!text.includes(letter)) {
+        text.push(letter);
+        document.getElementById(letter).classList.add('bg-gray-400');
+        let word = '';
+        for (let i = 0; i < answer.length; i++) {
+            if (text.includes(answer[i])) {
+                word += answer[i] + ' ';
+            } else {
+                word += '_ ';
+            }
+        }
+        wordEl.textContent = word;
+        if (!word.includes('_')) {
+            guessed = true;
+            Won();
+        }
+        if (!answer.includes(letter)) {
+            min++;
+            picture();
+        }
+        Lost();
+    }
 }
 
 function picture() {
-    document.querySelector(".img").src = "./content/img" + min +".jpg"
+    document.querySelector(".img").src = "./content/img/" + min + ".jpg";
 }
 
 function Won() {
-    if(wordEl == answer){
+    if(guessed) {
         document.querySelector("#keyboard").innerHTML = "You Won !";
+    
     }
 }
 
 function Lost() {
-     if(min == max){
-        document.querySelector("#word").innerHTML = "The Answer Was: " + answer
+    if (min == max) {
+        document.querySelector("#word").innerHTML = "The Answer Was: " + answer;
         document.querySelector("#keyboard").innerHTML = "You Lost !";
-     }
+        for (let i = 0; i < answer.length; i++) {
+            document.getElementById(answer[i]).classList.add('bg-green-500');
+        }
+    }
 }
 
 function reset() {
     text = [];
-   document.querySelector(".img").src = "./content/img/0.jpg"
+    guessed = false;
+    min = 0;
+    Random();
+    wordEl.textContent = answer.replace(/[a-z]/g, '_ ');
+    picture();
+    keyboard();
 }
 
-
-keyboard()
-Randowm()
+Random();
+wordEl = document.querySelector("#word");
+wordEl.textContent = answer.replace(/[a-z]/g, '_ ');
+picture();
+keyboard();
